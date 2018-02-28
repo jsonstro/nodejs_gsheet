@@ -1,3 +1,5 @@
+// node_gsheet.js
+// By Josh Sonstroem (jsonstro@ucsc.edu)
 //
 // (Modified version of docs from: https://developers.google.com/drive/v3/web/quickstart/nodejs)
 // Step 1: Turn on the Drive API
@@ -10,16 +12,6 @@
 // h) Click the file_download (Download JSON) button to the right of the client ID.
 // i) Move this file to your working directory and rename it client_secret.json
 //
-// Step 2: Install the libraries:
-//    "google-auth-library": "^1.3.1",
-//    "googleapis": "^26.0.1",
-//    "opn": "^5.2.0",
-//    "readline": "^1.3.0",
-//    "url": "^0.11.0"
-//
-// Step 3: Set up the sample
-// > node DriveOauthEg.js
-//
 // Sign in and get the code
 // Enter the code in the terminal and press enter
 //
@@ -27,6 +19,7 @@
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/drive-nodejs-quickstart.json
 //var SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly'];
+//var SCOPES = ['https://www.googleapis.com/auth/drive.metadata'];
 var SCOPES = ['https://www.googleapis.com/auth/drive'];
 var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
     process.env.USERPROFILE) + '/.credentials/';
