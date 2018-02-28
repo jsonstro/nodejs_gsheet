@@ -1,15 +1,13 @@
 // index.js
+
 const path = require('path')
 const express = require('express')
-const port = 3000
 const fs = require('fs')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser');
-const app = express()
 
-//app.get('/', (request, response) => {
-//  response.send('Hello from Express!')
-//})
+const app = express()
+const port = 3000
 
 app.use(bodyParser.json());
 
@@ -22,9 +20,18 @@ app.engine('.hbs', exphbs({
 app.set('view engine', '.hbs')
 app.set('views', path.join(__dirname, 'views'))
 
+app.use(express.static('public/images'));
+
 app.get('/', (request, response) => {
   response.render('home', {
-    name: 'John'
+    fname: 'John',
+    lname: 'Doe',
+    address: '123 Basic St.\nSanta Cruz, CA 95060',
+    fwver: '1.1.2',
+    motorsn: '23423545',
+    shipdate: '12/24/17',
+    mfgdate: '10/18/17',
+    netsuite: '12323'
   })
 })
 
