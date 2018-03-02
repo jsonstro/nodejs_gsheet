@@ -40,6 +40,7 @@ app.use('/users', users);
 
 app.get('/', (request, response) => {
   response.render('home', {
+    id: '12',
     fname: 'John',
     lname: 'Doe',
     address: '123 Basic St.\nSanta Cruz, CA 95060',
@@ -57,14 +58,6 @@ app.post('/users', function (req, res) {
         res.send('successfully registered')
     })
 })
-
-//app.listen(port, (err) => {
-//  if (err) {
-//    return console.log('something bad happened', err)
-//  }
-//
-//  console.log(`server is listening on ${port}`)
-//})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
