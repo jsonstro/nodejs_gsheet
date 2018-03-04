@@ -28,7 +28,7 @@ CREATE TABLE "ibmfg_data" (
 	"pcba_sn" TEXT NOT NULL UNIQUE,
 	"external_sn" TEXT NOT NULL UNIQUE,
 	"rflx_failure_code" TEXT NOT NULL,
-	“rflx_comments" TEXT NOT NULL,
+	"rflx_comments" TEXT NOT NULL,
 	"rflx_qa_sign_off" TEXT NOT NULL,
 	CONSTRAINT ibmfg_data_pk PRIMARY KEY ("deck_sn")
 ) WITH (
@@ -51,8 +51,8 @@ CREATE TABLE "ibmfg_versions" (
 
 CREATE TABLE "ibmfg_users" (
 	"id" serial(11) NOT NULL UNIQUE,
-	“username” TEXT NOT NULL UNIQUE,
-	"passwd” TEXT NOT NULL UNIQUE,
+	"username" TEXT NOT NULL UNIQUE,
+	"passwd" TEXT NOT NULL UNIQUE,
 	CONSTRAINT ibmfg_users_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
