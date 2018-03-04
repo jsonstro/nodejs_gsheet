@@ -1,0 +1,11 @@
+ibmfg_data
+id:int(11),created_by:text,last_gdoc_row_id:int,date:date,,deck_sn:int(8),motor_sn_l:text,motor_sn_r:text,motor_failure_code:text,motor_comments:text,motor_qa_sign_off:text,ma1_date:date,bcu_version:text,fw_version:text,main_board_sn:text,ma_failure_code:text,ma_comments:text,ma_qa_sign_off:text,pkg_date:date,remote_sn:text,battery_sn:text,battery_failure_code:text,battery_comments:text,battery_qa_sign_off:text,rflx_date:date,pcba_sn:text,external_sn:text,rflx_failure_code:text,rflx_comments:text,rflx_qa_sign_off:text
+
+ibmfg_versions
+id:int(11),bcu_version:text,fw_version:text,date_changed:datetime
+
+ibmfg_users
+id:int(11),username:text,firstname:text,lastname:text,passwd:text
+
+ibmfg_rush_orders
+id:int(11),serial:int(8),ordernum:text,alternateid:text,internalid:text,shipvia:text,weight:text,trackingnu:text,shipdate:date,item:text,qty_order:int,qty_fulfil:int,partialful:text,fully_fulf:text
