@@ -52,7 +52,9 @@ CREATE TABLE "ibmfg_versions" (
 CREATE TABLE "ibmfg_users" (
 	"id" serial(11) NOT NULL UNIQUE,
 	"username" TEXT NOT NULL UNIQUE,
-	"passwd" TEXT NOT NULL UNIQUE,
+	"firstname" TEXT NOT NULL,
+	"lastname" TEXT NOT NULL,
+	"passwd" TEXT NOT NULL,
 	CONSTRAINT ibmfg_users_pk PRIMARY KEY ("id")
 ) WITH (
   OIDS=FALSE
