@@ -1,0 +1,77 @@
+CREATE TABLE `ibmfg_data` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT UNIQUE,
+	`created_by` TEXT NOT NULL,
+	`created_on` DATETIME NOT NULL,
+	`updated_on` DATETIME NOT NULL,
+	`last_gdoc_row_id` INT NOT NULL,
+	`date` DATE,
+	`deck_sn` INT(8) NOT NULL UNIQUE,
+	`motor_sn_l` TEXT NOT NULL UNIQUE,
+	`motor_sn_r` TEXT NOT NULL UNIQUE,
+	`motor_failure_code` TEXT NOT NULL,
+	`motor_comments` TEXT NOT NULL,
+	`motor_qa_sign_off` TEXT NOT NULL,
+	`ma1_date` DATE NOT NULL,
+	`bcu_version` TEXT NOT NULL,
+	`fw_version` TEXT NOT NULL,
+	`main_board_sn` TEXT NOT NULL UNIQUE,
+	`ma_failure_code` TEXT NOT NULL,
+	`ma_comments` TEXT NOT NULL,
+	`ma_qa_sign_off` TEXT NOT NULL,
+	`pkg_date` DATE NOT NULL,
+	`remote_sn` TEXT NOT NULL UNIQUE,
+	`battery_sn` TEXT NOT NULL UNIQUE,
+	`battery_failure_code` TEXT NOT NULL,
+	`battery_comments` TEXT NOT NULL,
+	`battery_qa_sign_off` TEXT NOT NULL,
+	`rflx_date` DATE NOT NULL,
+	`pcba_sn` TEXT NOT NULL UNIQUE,
+	`external_sn` TEXT NOT NULL UNIQUE,
+	`rflx_failure_code` TEXT NOT NULL,
+	`rflx_comments` TEXT NOT NULL,
+	`rflx_qa_sign_off` TEXT NOT NULL,
+	PRIMARY KEY (`deck_sn`)
+);
+
+CREATE TABLE `ibmfg_versions` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT UNIQUE,
+	`bcu_version` TEXT NOT NULL,
+	`fw_version` TEXT NOT NULL,
+	`date_changed` DATETIME NOT NULL,
+	PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `ibmfg_users` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT UNIQUE,
+	`username` TEXT NOT NULL UNIQUE,
+	`passwd` TEXT NOT NULL,
+	PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `ibmfg_rush_orders` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT UNIQUE,
+	`date_created` DATETIME NOT NULL,
+	`date_updated` DATETIME NOT NULL,
+	`serial` INT(8) NOT NULL UNIQUE,
+	`ordernum` TEXT NOT NULL,
+	`alternateid` TEXT NOT NULL,
+	`internalid` TEXT NOT NULL UNIQUE,
+	`shipvia` TEXT NOT NULL,
+	`weight` TEXT NOT NULL,
+	`trackingnu` TEXT NOT NULL,
+	`shipdate` DATE NOT NULL,
+	`item` TEXT NOT NULL,
+	`qty_order` INT NOT NULL,
+	`qty_fulfil` INT NOT NULL,
+	`partialful` TEXT NOT NULL,
+	`fully_fulf` TEXT NOT NULL,
+	PRIMARY KEY (`id`)
+);
+
+ALTER TABLE `ibmfg_data` ADD CONSTRAINT `ibmfg_data_fk0` FOREIGN KEY (`created_by`) REFERENCES `ibmfg_users`(`username`);
+
+ALTER TABLE `ibmfg_data` ADD CONSTRAINT `ibmfg_data_fk1` FOREIGN KEY (`bcu_version`) REFERENCES `ibmfg_versions`(`bcu_version`);
+
+ALTER TABLE `ibmfg_data` ADD CONSTRAINT `ibmfg_data_fk2` FOREIGN KEY (`fw_version`) REFERENCES `ibmfg_versions`(`fw_version`);
+
+ALTER TABLE `ibmfg_rush_orders` ADD CONSTRAINT `ibmfg_rush_orders_fk0` FOREIGN KEY (`serial`) REFERENCES `ibmfg_data`(`deck_sn`);
