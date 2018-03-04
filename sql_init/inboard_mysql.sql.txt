@@ -44,6 +44,8 @@ CREATE TABLE `ibmfg_versions` (
 CREATE TABLE `ibmfg_users` (
 	`id` INT(11) NOT NULL AUTO_INCREMENT UNIQUE,
 	`username` TEXT NOT NULL UNIQUE,
+	`firstname` TEXT NOT NULL,
+	`lastname` TEXT NOT NULL,
 	`passwd` TEXT NOT NULL,
 	PRIMARY KEY (`id`)
 );
