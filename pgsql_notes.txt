@@ -1,0 +1,14 @@
+pg_ctl -D /usr/local/var/postgres start
+pg_ctl -D /usr/local/var/postgres stop
+brew services start postgresql
+psql postgres
+CREATE ROLE inboard with LOGIN PASSWORD '<PASSWORD>';
+ALTER ROLE inboard CREATEDB;
+\du
+\q
+psql postgres -U inboard
+CREATE DATABASE inboard;
+GRANT ALL PRIVILEGES ON DATABASE inboard TO inboard;
+\connect inboard
+\dt
+\q
