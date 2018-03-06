@@ -6,7 +6,7 @@ module.exports = {
       .create({
         deck_sn: req.body.deck_sn,
         created_by: "inboard", 
-        //req.body.created_by,
+        //created_by: req.body.created_by,
       })
       .then(rush => res.status(201).send(rush))
       .catch(error => res.status(400).send(error));
