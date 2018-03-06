@@ -1,9 +1,10 @@
 const fs = require('fs');
 const csv = require('csv');
-//const Device = require('./models').Device
+const Rush = require('./server/models').RushOrders
 
-const input = fs.createReadStream('test.csv');
+const input = fs.createReadStream('./csv/rush_test.csv');
 const parser = csv.parse({
+  relax: true,
   delimiter: ',',
   columns: true
 })
@@ -27,14 +28,10 @@ const transform = csv.transform(row => {
     created_by: "inboard",
     //created_by: row[''].slice(2, 4),
   }
+  console.log(resultObj);
   Rush.create(resultObj)
     .then(rush => res.status(201).send(rush))
-    //function() {
-    //    console.log('Record created')
-    //})
-    .catch(function(err) {
-      console.log('Error encountered: ' + err)
-    })
+    .catch(err => res.status(400).send(err))
 })
 
 input.pipe(parser).pipe(transform)

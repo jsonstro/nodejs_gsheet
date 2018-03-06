@@ -1,0 +1,2 @@
+serial,ordernum,internalid,sales_ord,shipvia,weight,trackingnu,shipdate,item,qty_order,qty_fulill,partialful,fully_full,alternateid
+1234568, 123, ret31, 134354, fedex, 1.234 lbs, f23423234567600003500x23434, 12/23/2017, "inboard longboard", 1, 1, 0, 1, netsuite12345 
