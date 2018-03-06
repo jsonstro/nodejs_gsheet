@@ -9,15 +9,23 @@ module.exports = {
       },
       username: {
         primaryKey: true,
+        allowNull: false,
         type: Sequelize.TEXT
       },
       firstname: {
+        allowNull: false,
         type: Sequelize.TEXT
       },
       lastname: {
+        allowNull: false,
+        type: Sequelize.TEXT
+      },
+      type: {
+        allowNull: false,
         type: Sequelize.TEXT
       },
       passwd: {
+        allowNull: false,
         type: Sequelize.TEXT
       },
       createdAt: {

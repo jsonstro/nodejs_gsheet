@@ -1,2 +1,0 @@
-# curl -v -H "Content-Type: application/json" -X POST -d '{"name":"J", "age":"18"}' http://localhost:3000/users
-{"name":"J","age":"18"}

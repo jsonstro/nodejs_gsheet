@@ -37,10 +37,10 @@ module.exports = {
         type: Sequelize.TEXT
       },
       qty_order: {
-        type: Sequelize.INT
+        type: Sequelize.INTEGER
       },
       qty_fulfil: {
-        type: Sequelize.INT
+        type: Sequelize.INTEGER
       },
       partialful: {
         type: Sequelize.TEXT
@@ -49,7 +49,12 @@ module.exports = {
         type: Sequelize.TEXT
       },
       created_by: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        references: {
+          model: 'Users',
+          key: 'username',
+          as: 'created_by',
+        }
       },
       createdAt: {
         allowNull: false,

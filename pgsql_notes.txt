@@ -1,14 +1,25 @@
-pg_ctl -D /usr/local/var/postgres start
-pg_ctl -D /usr/local/var/postgres stop
-brew services start postgresql
-psql postgres
+# pg_ctl -D /usr/local/var/postgres start
+# pg_ctl -D /usr/local/var/postgres stop
+# brew services start postgresql
+# node_modules/.bin/sequelize init
+# node_modules/.bin/sequelize model:create --name Users --attributes username:text,firstname:text,lastname:text,passwd:text
+# node_modules/.bin/sequelize model:create --name Data --attributes created_by:text,last_gdoc_row_id:int,date:date,,deck_sn:int\(8\),motor_sn_l:text,motor_sn_r:text,motor_failure_code:text,motor_comments:text,motor_qa_sign_off:text,ma1_date:date,bcu_version:text,fw_version:text,main_board_sn:text,ma_failure_code:text,ma_comments:text,ma_qa_sign_off:text,pkg_date:date,remote_sn:text,battery_sn:text,battery_failure_code:text,battery_comments:text,battery_qa_sign_off:text,rflx_date:date,pcba_sn:text,external_sn:text,rflx_failure_code:text,rflx_comments:text,rflx_qa_sign_off:text
+# node_modules/.bin/sequelize model:create --name Versions --attributes bcu_version:text,fw_version:text,date_changed:datetime
+# node_modules/.bin/sequelize model:create --name RushOrders --attributes created_by:text,deck_sn:int\(8\),ordernum:text,alternateid:text,internalid:text,shipvia:text,weight:text,trackingnu:text,shipdate:date,item:text,qty_order:int,qty_fulfil:int,partialful:text,fully_fulf:text
+
+# psql postgres
 CREATE ROLE inboard with LOGIN PASSWORD '<PASSWORD>';
 ALTER ROLE inboard CREATEDB;
 \du
 \q
-psql postgres -U inboard
+# psql postgres -U inboard
 CREATE DATABASE inboard;
 GRANT ALL PRIVILEGES ON DATABASE inboard TO inboard;
 \connect inboard
 \dt
 \q
+# sequelize db:migrate
+
+curl -v -H "Content-Type: application/json" -X POST -d '{"deck_sn":"01234567"}' http://localhost:3000/api/data
+curl -v -H "Content-Type: application/json" -X POST -d '{"deck_sn":"01234567"}' http://localhost:3000/api/rush
+curl -v -H "Content-Type: application/json" -X POST -d '{"username": "inboard", "firstname": "In", "lastname": "Board", "passwd": "9c78f42e614792df038997daa76266a4"}' http://localhost:3000/api/user

@@ -2,7 +2,15 @@
 module.exports = (sequelize, DataTypes) => {
   const RushOrders = sequelize.define('RushOrders', {
     id: DataTypes.INTEGER(11),
-    deck_sn: {type: DataTypes.INTEGER(8), primaryKey: true},
+    deck_sn: {
+      type: DataTypes.INTEGER(8), 
+      primaryKey: true,
+      //references: {
+      //  model: 'Data',
+      //  key: 'deck_sn',
+      //  as: 'deck_sn',
+      //},
+    },
     ordernum: DataTypes.TEXT,
     alternateid: DataTypes.TEXT,
     internalid: DataTypes.TEXT,
@@ -19,7 +27,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   RushOrders.associate = function(models) {
     // associations can be defined here
+    //RushOrders.belongsTo(models.Data, {
+    //  foreignKey: 'deck_sn'
+    //});
   };
-  //RushOrders.belongsTo(Data, {foreignKey: 'deck_sn'});
   return RushOrders;
 };

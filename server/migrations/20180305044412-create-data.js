@@ -8,10 +8,15 @@ module.exports = {
         type: Sequelize.INTEGER(11)
       },
       created_by: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        references: {
+          model: 'Users',
+          key: 'username',
+          as: 'created_by',
+        },
       },
       last_gdoc_row_id: {
-        type: Sequelize.INT
+        type: Sequelize.INTEGER
       },
       date: {
         type: Sequelize.DATE

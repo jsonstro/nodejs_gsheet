@@ -38,6 +38,8 @@ app.use(express.static('public/images'));
 //app.use('/', index);
 app.use('/users', users);
 
+require('./server/routes')(app);
+
 app.get('/', (request, response) => {
   response.render('home', {
     id: '12',
@@ -52,12 +54,12 @@ app.get('/', (request, response) => {
   })
 })
 
-app.post('/users', function (req, res) {
-    const user = req.body
-    fs.appendFile('users.txt', JSON.stringify({ name: user.name, age: user.age }), (err) => {
-        res.send('successfully registered')
-    })
-})
+//app.post('/users', function (req, res) {
+//    const user = req.body
+//    fs.appendFile('users.txt', JSON.stringify({ name: user.name, age: user.age }), (err) => {
+//        res.send('successfully registered')
+//    })
+//})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
