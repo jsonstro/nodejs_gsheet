@@ -2,6 +2,44 @@
   <head>
     <title>InBoard Customer Service System</title>
     <link rel="icon" href="favicon.png"> 
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#user-submit').click(function () {
+          var payload = {
+            deck_sn: $('#deck-sn').val()
+          };
+          $.ajax({
+            url: "/api/form_d",
+            type: "POST",
+            contentType: "application/json",
+            processData: false,
+            data: JSON.stringify(payload),
+            complete: function (data) {
+              $('#output').html(data.responseText);
+            }
+          });
+          $.ajax({
+            url: "/api/form_r",
+            type: "POST",
+            contentType: "application/json",
+            processData: false,
+            data: JSON.stringify(payload),
+            complete: function (data) {
+              const a = JSON.parse(data.responseText, (key, value) => {
+                if (key === "alternateid") {
+                  $('#netsuite').val(value);
+                } else if (key === "deck_sn") {
+                  $('#decksn').val(value);
+                } else if (key === "id") {
+                  $('#recid').val(value);
+                }
+              });
+            }
+          });
+        });
+      });
+    </script>
   </head>
   <body>
     {{{body}}}

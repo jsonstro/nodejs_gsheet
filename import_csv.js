@@ -6,7 +6,9 @@ const input = fs.createReadStream('./csv/rush_test.csv');
 const parser = csv.parse({
   relax: true,
   delimiter: ',',
-  columns: true
+  skip_empty_lines: false, 
+  auto_parse: true, 
+  columns: true,
 })
 
 const transform = csv.transform(row => {
@@ -28,10 +30,11 @@ const transform = csv.transform(row => {
     created_by: "inboard",
     //created_by: row[''].slice(2, 4),
   }
-  console.log(resultObj);
+  //console.log(resultObj);
   Rush.create(resultObj)
     .then(rush => res.status(201).send(rush))
-    .catch(err => res.status(400).send(err))
+    //.catch(err => res.status(400).send(err))
+    .catch(err => console.error(err))
 })
 
 input.pipe(parser).pipe(transform)
