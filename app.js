@@ -19,13 +19,13 @@ const port = 3000
 app.engine('.hbs', exphbs({
   defaultLayout: 'main',
   extname: '.hbs',
-  layoutsDir: path.join(__dirname, 'views/layouts')
+  layoutsDir: path.join(__dirname, 'server', 'views', 'layouts')
 }))
 
 // view engine setup
 //app.set('view engine', 'jade');
 app.set('view engine', '.hbs')
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, 'server', 'views'))
 
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
