@@ -32,7 +32,19 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript">
       $(document).ready(function () {
-        $('#user-submit').click(function () {
+        $('#user-clear').click(function () {
+          $('#deck-sn').val("");  
+          $('#mfgdate').val("");  
+          $('#motorsnl').val("");  
+          $('#motorsnr').val("");  
+          $('#fwversion').val("");  
+          $('#bcuversion').val("");  
+          $('#drecid').val("");  
+          $('#rrecid').val("");  
+          $('#netsuite').val("");  
+          $('#shipdate').val("");  
+        });
+        function postForm() {
           var payload = {
             deck_sn: $('#deck-sn').val()
           };
@@ -58,7 +70,6 @@
                   $('#drecid').val(value);
                 }
               });
-              $('#output').html(data.responseText);
             }
           });
           $.ajax({
@@ -78,6 +89,54 @@
                 }
               });
             }
+          });
+        }
+        $('#user-submit').click(function () {
+          postForm();
+        });
+        $("form#input").keydown(function(event){
+          if(event.which == 13) {
+            event.preventdefault();
+            postForm();
+          }
+        });
+        const files = [];
+        $("input[type=file]").change(function(event) {
+          $.each(event.target.files, function(index, file) {
+            var reader = new FileReader();
+            reader.onload = function(event) {
+              object = {};
+              object.filename = file.name;
+              object.data = event.target.result;
+              files.push(object);
+            };
+            reader.readAsDataURL(file);
+          });
+        });
+        $("#upload").submit(function(form) {
+          $.each(files, function(index, file) {
+            $.ajax({
+              url: "/api/import_r_up",
+              type: 'POST',
+              data: {filename: file.filename, data: file.data},
+              success: function(data, status, xhr) {}
+            });
+          });
+          files = [];
+          form.preventDefault();
+        });
+        $('#rush-import').click(function () {
+          var payload = {
+            csv_name: $('#csv-name').val()
+          };
+          $.ajax({
+            url: "/api/import_r",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(payload),
+            processData: false,
+            //data: result,
+            //name: fileName,
           });
         });
       });

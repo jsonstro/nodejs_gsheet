@@ -20,4 +20,7 @@ module.exports = (app) => {
 
   app.post('/api/form_r', rushController.fetch);
   app.post('/api/form_d', dataController.fetch);
+
+  app.post('/api/import_r', rushController.csvImport);
+  app.post('/api/import_r_up', rushController.csvupImport);
 };

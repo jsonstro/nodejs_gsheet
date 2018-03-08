@@ -105,16 +105,15 @@ function storeToken(token) {
 }
 
 /**
- * Print the names and majors of students in a sample spreadsheet:
+ * Create rows in the Data model from rows in the gsheet spreadsheet:
  * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
  */
 function getRows (auth) {
   const sheets = google.sheets('v4');
   sheets.spreadsheets.values.get({
     auth: auth,
-    spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-    //range: 'Production Data!A2:Z'
-    range: 'Class Data!A2:Z'
+    spreadsheetId: '',
+    range: 'Production Data!A2:Z'
   }, (err, res) => {
     console.log("");
     if (err) {
@@ -125,17 +124,19 @@ function getRows (auth) {
     if (rows.length === 0) {
       console.log('No data found.');
     } else {
-      //console.log('Name, Major:');
       const c = 0;
       // query api for last row in postgres data table and get the 'last_gdoc_row_id' from that record
       const q = Data.findAll({
         limit: 1,
         order: [ [ 'createdAt', 'DESC' ]]
-      }).then(entries => {
+      })
+      .then(entries => {
         console.log(entries.last_gdoc_row_id);
-        return entries.last_gdoc_row_id;
-      });
-      // const t = Data.countAll();
+        return entries.last_gdoc_row_id || 0;
+      })
+      .catch(
+        err => console.error(err);
+      );
       for (const row of rows) {
         if (c > q) then { 
           // Print columns A thru Z, which correspond to indices 0 and 25.
@@ -171,40 +172,10 @@ function getRows (auth) {
             last_gdoc_row_id: rows.length,
           }
           Data.create(resultObj)
-            .then(rush => res.status(201).send(rush))
-            .catch(err => console.error(err))
+          .then(rush => res.status(201).send(rush))
+          .catch(err => console.error(err));
           c += 1;
         }
-      }
-    }
-  });
-}
-
-/**
- * Lists the names and IDs of up to 10 files.
- *
- * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
- */
-function listFiles(auth) {
-  const service = google.drive('v3');
-  service.files.list({
-    auth: auth,
-    pageSize: 10,
-    fields: "nextPageToken, files(id, name)"
-  }, function(err, response) {
-    console.log("");
-    if (err) {
-      console.log('The API returned an error: ' + err);
-      return;
-    }
-    const files = response.data.files;
-    if (files.length == 0) {
-      console.log('No files found.');
-    } else {
-      console.log('Files:');
-      for (var i = 0; i < files.length; i++) {
-        var file = files[i];
-        console.log('%s (%s)', file.name, file.id);
       }
     }
   });

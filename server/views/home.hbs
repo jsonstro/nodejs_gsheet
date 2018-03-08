@@ -1,6 +1,8 @@
 <img src="inboard_logo.png" />
 <h2>Customer Service System</h2>
-  Deck S/N <input type="text" id="deck-sn" name="deck_sn" value=""> <input class="button" id="user-submit" type="submit" value="Search">
+  <form id="input" onsubmit="return false">
+    Deck S/N <input type="text" id="deck-sn" name="deck_sn" value=""> <input class="button" id="user-submit" type="submit" value="Search"> <input class="button" id="user-clear" type="submit" value="Clear">
+  </form>
   <hr />
   Rush Rec ID <input type="text" id="rrecid" style="width:5%;"> Data Rec ID <input type="text" id="drecid" style="width:5%;"><br />
   Netsuite # <input type="text" id="netsuite"><br />
@@ -10,6 +12,12 @@
   Motor S/N R <input type="text" id="motorsnr"><br />
   FW Version <input type="text" id="fwversion"><br />
   BCU Version <input type="text" id="bcuversion"><br />
+  <hr />
+  Rush CSV Name <input type="text" id="csv-name" value=""> <input class="button" id="rush-import" type="submit" value="Import"><br />
+  <form id="upload">
+    <label for="myFile">Upload Rush CSV</label>
+    <input name="myFile" type="file"><input class="button" id="rush-upload" type="submit" value="Upload">
+  <hr />
 <!--
   Deck S/N <input type="text" id="decksn"><br />
   First Name <input type="text" id="firstname"><br />

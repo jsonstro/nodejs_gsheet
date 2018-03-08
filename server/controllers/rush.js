@@ -1,4 +1,5 @@
 const Rush = require('../models').RushOrders;
+const importCsv = require('../../import_csv');
 
 module.exports = {
   create(req, res) {
@@ -63,5 +64,21 @@ module.exports = {
         return res.status(200).send(rush);
       })
       .catch(error => res.status(400).send(error));
+  },
+  csvupImport(req) {
+    const data = req.body.data;
+    const filename = req.body.filename;
+   
+    console.log(data.index('base64'));
+    const data_index = data.index('base64') + 7;
+    const filedata = data.slice(data_index, data.length);
+    const decoded_image = Base64.decode64(filedata);
+     
+    const file = File.new("./csv/#{filename}", "w+");
+    file.write(decoded_image)
+    .then(importCsv.Import("./csv/#{filename}"));
+  },
+  csvImport(req) {
+    importCsv.Import(req.body.csv_name);
   },
 };
