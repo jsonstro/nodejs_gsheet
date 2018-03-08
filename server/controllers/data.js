@@ -5,7 +5,21 @@ module.exports = {
     return Deck
       .create({
         deck_sn: req.body.deck_sn,
-        created_by: "inboard", //req.body.created_by,
+        last_gdoc_row_id: req.body.last_gdoc_row_id,
+        date: req.body.date,
+        motor_sn_l: req.body.motor_sn_l,
+        motor_sn_r: req.body.motor_sn_r,
+        bcu_version: req.body.bcu_version,
+        fw_version: req.body.fw_version,
+        main_board_sn: req.body.main_board_sn,
+        pkg_date: req.body.pkg_date,
+        remote_sn: req.body.remote_sn,
+        battery_sn: req.body.battery_sn,
+        rflx_date: req.body.rflx_date,
+        pcba_sn: req.body.pcba_sn,
+        external_sn: req.body.external_sn,
+        created_by: "inboard",
+        //created_by: req.body.created_by,
       })
       .then(deck => res.status(201).send(deck))
       .catch(error => res.status(400).send(error));
@@ -14,6 +28,12 @@ module.exports = {
     return Deck
       .all()
       .then(deck => res.status(200).send(deck))
+      .catch(error => res.status(400).send(error));
+  },
+  countAll(req, res) {
+    return Deck
+      .findAndCountAll()
+      .then(deck => res.status(200).send(deck.count))
       .catch(error => res.status(400).send(error));
   },
   retrieve(req, res) {

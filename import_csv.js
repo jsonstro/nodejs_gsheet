@@ -21,14 +21,13 @@ const transform = csv.transform(row => {
     weight: row['weight'],
     trackingnu: row['trackingnu'],
     shipdate: row['shipdate'],
-    item: row['item'] ,
+    item: row['item'],
     qty_order: row['qty_order'],
     qty_fulfil: row['qty_fulill'],
     partialful: row['partialful'],
     fully_full: row['fully_full'],
     alternateid: row['alternateid'],
     created_by: "inboard",
-    //created_by: row[''].slice(2, 4),
   }
   //console.log(resultObj);
   Rush.create(resultObj)

@@ -20,10 +20,9 @@
 // at ~/.credentials/drive-nodejs-quickstart.json
 //var SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly'];
 //var SCOPES = ['https://www.googleapis.com/auth/drive.metadata'];
-var SCOPES = ['https://www.googleapis.com/auth/drive'];
-var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
-    process.env.USERPROFILE) + '/.credentials/';
-var TOKEN_PATH = TOKEN_DIR + 'drive-nodejs-quickstart.json';
+const SCOPES = ['https://www.googleapis.com/auth/drive'];
+const TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE) + '/.credentials/';
+const TOKEN_PATH = TOKEN_DIR + 'drive-nodejs-quickstart.json';
 
 const fs = require('fs');
 const readline = require('readline');
@@ -36,6 +35,9 @@ const opn = require('opn');
 const util = require('util');
 const keys = require('./credentials.json');
 
+// add our sequelize db model
+const Data = require('./server/models').Data
+
 // Convert fs.readFile into Promise version of same
 const readFile = util.promisify(fs.readFile);
 
@@ -45,8 +47,8 @@ const readFile = util.promisify(fs.readFile);
 async function main() {
   getCreds(TOKEN_PATH)
   .then(oa2 => {
-    listFiles(oa2);
-    listMajors(oa2);
+    //listFiles(oa2);
+    getRows(oa2);
   })
   .catch(err => {
     console.error(err);
@@ -106,12 +108,13 @@ function storeToken(token) {
  * Print the names and majors of students in a sample spreadsheet:
  * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
  */
-function listMajors (auth) {
+function getRows (auth) {
   const sheets = google.sheets('v4');
   sheets.spreadsheets.values.get({
     auth: auth,
     spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-    range: 'Class Data!A2:E'
+    //range: 'Production Data!A2:Z'
+    range: 'Class Data!A2:Z'
   }, (err, res) => {
     console.log("");
     if (err) {
@@ -122,10 +125,56 @@ function listMajors (auth) {
     if (rows.length === 0) {
       console.log('No data found.');
     } else {
-      console.log('Name, Major:');
+      //console.log('Name, Major:');
+      const c = 0;
+      // query api for last row in postgres data table and get the 'last_gdoc_row_id' from that record
+      const q = Data.findAll({
+        limit: 1,
+        order: [ [ 'createdAt', 'DESC' ]]
+      }).then(entries => {
+        console.log(entries.last_gdoc_row_id);
+        return entries.last_gdoc_row_id;
+      });
+      // const t = Data.countAll();
       for (const row of rows) {
-        // Print columns A and E, which correspond to indices 0 and 4.
-        console.log(`${row[0]}, ${row[4]}`);
+        if (c > q) then { 
+          // Print columns A thru Z, which correspond to indices 0 and 25.
+          console.log(`${row[0]},${row[1]},${row[2]},${row[3]},${row[4]},${row[5]},${row[6]},${row[7]},${row[8]},${row[9]},${row[10]},${row[11]},${row[12]},${row[13]},${row[14]},${row[15]},${row[16]},${row[17]},${row[18]},${row[19]},${row[20]},${row[21]},${row[22]},${row[23]},${row[24]},${row[25]}`);
+          // Construct the result object from each row and run create
+          const resultObj = {
+            date: row[0], //a
+            deck_sn: row[1],
+            motor_sn_l: row[2],
+            motor_sn_r: row[3], //d
+            motor_failure_code: row[4],
+            motor_comments: row[5],
+            motor_qa_sign_off: row[6],
+            ma1_date: row[7],
+            bcu_version: row[8], //i
+            fw_version: row[9],
+            main_board_sn: row[10],
+            ma_failure_code: row[11],
+            ma_comments: row[12],
+            ma_qa_sign_off: row[13],
+            pkg_date: row[14], //o
+            remote_sn: row[15],
+            battery_sn: row[16],
+            battery_failure_code: row[17],
+            battery_comments: row[18],
+            battery_qa_sign_off: row[19],
+            rflx_date: row[20], //u
+            pcba_sn: row[21],
+            external_sn: row[22],
+            rflx_failure_code: row[23],
+            rflx_comments: row[24],
+            rflx_qa_sign_off: row[25],
+            last_gdoc_row_id: rows.length,
+          }
+          Data.create(resultObj)
+            .then(rush => res.status(201).send(rush))
+            .catch(err => console.error(err))
+          c += 1;
+        }
       }
     }
   });

@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const RushOrders = sequelize.define('RushOrders', {
-    id: DataTypes.INTEGER(11),
+    id: DataTypes.INTEGER,
     deck_sn: {
       type: DataTypes.INTEGER(8), 
       primaryKey: true,

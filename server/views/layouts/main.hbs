@@ -43,6 +43,21 @@
             processData: false,
             data: JSON.stringify(payload),
             complete: function (data) {
+              const a = JSON.parse(data.responseText, (key, value) => {
+                if (key === "date") {
+                  $('#mfgdate').val(value);
+                } else if (key === "motor_sn_l") {
+                  $('#motorsnl').val(value);
+                } else if (key === "motor_sn_r") {
+                  $('#motorsnr').val(value);
+                } else if (key === "fw_version") {
+                  $('#fwversion').val(value);
+                } else if (key === "bcu_version") {
+                  $('#bcuversion').val(value);
+                } else if (key === "id") {
+                  $('#drecid').val(value);
+                }
+              });
               $('#output').html(data.responseText);
             }
           });
@@ -56,10 +71,10 @@
               const a = JSON.parse(data.responseText, (key, value) => {
                 if (key === "alternateid") {
                   $('#netsuite').val(value);
-                } else if (key === "deck_sn") {
-                  $('#decksn').val(value);
+                } else if (key === "shipdate") {
+                  $('#shipdate').val(value);
                 } else if (key === "id") {
-                  $('#recid').val(value);
+                  $('#rrecid').val(value);
                 }
               });
             }

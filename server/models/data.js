@@ -1,6 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Data = sequelize.define('Data', {
+    id: DataTypes.INTEGER,
     created_by: DataTypes.TEXT,
     last_gdoc_row_id: DataTypes.INTEGER,
     date: DataTypes.DATE,

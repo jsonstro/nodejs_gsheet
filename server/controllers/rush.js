@@ -5,6 +5,19 @@ module.exports = {
     return Rush
       .create({
         deck_sn: req.body.deck_sn,
+        ordernum: req.body.ordernum,
+        internalid: req.body.internalid,
+        sales_ord: req.body.sales_ord,
+        shipvia: req.body.shipvia,
+        weight: req.body.weight,
+        trackingnu: req.body.trackingnu,
+        shipdate: req.body.shipdate,
+        item: req.body.item,
+        qty_order: req.body.qty_order,
+        qty_fulfil: req.body.qty_fulill,
+        partialful: req.body.partialful,
+        fully_full: req.body.fully_full,
+        alternateid: req.body.alternateid,
         created_by: "inboard", 
         //created_by: req.body.created_by,
       })
