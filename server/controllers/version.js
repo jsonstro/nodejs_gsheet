@@ -4,6 +4,7 @@ module.exports = {
   create(req, res) {
     return Version
       .create({
+        id: req.body.id, 
         bcu_version: req.body.bcu_version, 
         fw_version: req.body.fw_version, 
         date_changed: req.body.date_changed, 
