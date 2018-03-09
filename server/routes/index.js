@@ -1,6 +1,7 @@
 const dataController = require('../controllers').data;
 const userController = require('../controllers').user;
 const rushController = require('../controllers').rush;
+const versController = require('../controllers').vers;
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
@@ -10,10 +11,12 @@ module.exports = (app) => {
   app.post('/api/data', dataController.create);
   app.post('/api/user', userController.create);
   app.post('/api/rush', rushController.create);
+  app.post('/api/version', versController.create);
 
   app.get('/api/data', dataController.list);
   app.get('/api/user', userController.list);
   app.get('/api/rush', rushController.list);
+  app.get('/api/version', versController.list);
 
   app.get('/api/rush/:deck_sn', rushController.retrieve);
   app.get('/api/data/:deck_sn', dataController.retrieve);
@@ -22,5 +25,5 @@ module.exports = (app) => {
   app.post('/api/form_d', dataController.fetch);
 
   app.post('/api/import_r', rushController.csvImport);
-  app.post('/api/import_r_up', rushController.csvupImport);
+  app.post('/api/upport_r', rushController.csvUpport);
 };

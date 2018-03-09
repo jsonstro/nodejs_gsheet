@@ -9,9 +9,7 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const importCsv = require('./import_csv');
-
-//const index = require('./routes/index');
-//const users = require('./routes/users');
+const importGsh = require('./node_gsheet');
 
 const app = express()
 const port = 3000
@@ -23,11 +21,9 @@ app.engine('.hbs', exphbs({
 }))
 
 // view engine setup
-//app.set('view engine', 'jade');
 app.set('view engine', '.hbs')
 app.set('views', path.join(__dirname, 'server', 'views'))
 
-// uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -35,31 +31,15 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public/images'));
 
-//app.use('/', index);
-//app.use('/users', users);
-
 require('./server/routes')(app);
 
 app.get('/', (request, response) => {
   response.render('home', {
-    //id: '12',
     //fname: 'John',
     //lname: 'Doe',
     //address: '123 Basic St.\nSanta Cruz, CA 95060',
-    //fwver: '1.1.2',
-    //motorsn: '23423545',
-    //shipdate: '12/24/17',
-    //mfgdate: '10/18/17',
-    //netsuite: '12323'
   })
 })
-
-//app.post('/users', function (req, res) {
-//    const user = req.body
-//    fs.appendFile('users.txt', JSON.stringify({ name: user.name, age: user.age }), (err) => {
-//        res.send('successfully registered')
-//    })
-//})
 
 // setup the logger
 app.use(logger('dev'));

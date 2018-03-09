@@ -116,7 +116,7 @@
         $("#upload").submit(function(form) {
           $.each(files, function(index, file) {
             $.ajax({
-              url: "/api/import_r_up",
+              url: "/api/upport_r",
               type: 'POST',
               data: {filename: file.filename, data: file.data},
               success: function(data, status, xhr) {}
@@ -135,8 +135,6 @@
             contentType: "application/json",
             data: JSON.stringify(payload),
             processData: false,
-            //data: result,
-            //name: fileName,
           });
         });
       });
