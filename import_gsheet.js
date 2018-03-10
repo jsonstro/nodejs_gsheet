@@ -176,6 +176,7 @@ module.exports = {
                   rflx_comments: row[24],
                   rflx_qa_sign_off: row[25],
                   last_gdoc_row_id: rows.length,
+                  created_by: "inboard",
                 }
                 Data.create(resultObj)
                 .then(rush => res.status(201).send(rush))

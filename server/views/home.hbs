@@ -4,7 +4,7 @@
     Deck S/N <input type="text" id="deck-sn" name="deck_sn" value="" style="width:10%"> <input class="button" id="user-submit" type="submit" value="Search"> <input class="button" id="user-clear" type="submit" value="Clear">
   </form>
   <hr />
-  Rush Rec ID <input type="text" id="rrecid" style="width:5%;"> Data Rec ID <input type="text" id="drecid" style="width:5%;"><br />
+  Rush Rec ID <input type="text" id="rrecid" style="width:30px;"> Data Rec ID <input type="text" id="drecid" style="width:30px;"><br />
   Netsuite # <input type="text" id="netsuite"><br />
   MFG Date <input type="text" id="mfgdate"><br />
   Ship Date <input type="text" id="shipdate"><br />
@@ -21,7 +21,8 @@
   <form id="import">
     <label for="data-incremental">Import gSheet</label>
     <input name="data-incremental" class="button" id="data-incremental" type="submit" value="Incremental">
-    <input name="data-full" class="button" id="data-full" type="submit" value="Full">
+    <input name="data-full" class="button" id="data-full" type="submit" value="Full"><br />
+    <input type="text" id="csv-name" value="2017_mfg_data.csv" style="width:120px; font-size:.75em"><input name="data-import" class="button" id="data-import" type="submit" value="Initialize">
   </form>
 <!--
   Deck S/N <input type="text" id="decksn"><br />

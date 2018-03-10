@@ -1,5 +1,6 @@
 const Deck = require('../models').Data;
 const importGsh = require('../../import_gsheet');
+const importCsv = require('../../import_csv');
 
 module.exports = {
   create(req, res) {
@@ -71,8 +72,12 @@ module.exports = {
       })
       .catch(error => res.status(400).send(error));
   },
+  // Daily API import of mfg gSheet
   gshImport(req) {
-    //console.log(req);
     importGsh.importRows(req.body.type);
+  },
+  // Pre-2018 mfg data
+  csvImport(req) {
+    importCsv.Import(req.body.csv_name);
   },
 };
