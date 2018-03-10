@@ -137,6 +137,31 @@
             processData: false,
           });
         });
+        $('#data-incremental').click(function () {
+          var payload = {
+            type: "incremental"
+          };
+          $.ajax({
+            url: "/api/import_d",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(payload),
+            processData: false,
+          });
+        });
+        $('#data-full').click(function () {
+          var payload = {
+            type: "full"
+          };
+          $.ajax({
+            url: "/api/import_d",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(payload),
+            processData: false,
+          });
+        });
+
       });
     </script>
   </head>

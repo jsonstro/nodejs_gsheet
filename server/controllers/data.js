@@ -1,4 +1,5 @@
 const Deck = require('../models').Data;
+const importGsh = require('../../import_gsheet');
 
 module.exports = {
   create(req, res) {
@@ -69,5 +70,9 @@ module.exports = {
         return res.status(200).send(deck);
       })
       .catch(error => res.status(400).send(error));
+  },
+  gshImport(req) {
+    //console.log(req);
+    importGsh.importRows(req.body.type);
   },
 };

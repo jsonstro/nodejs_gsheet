@@ -26,4 +26,5 @@ module.exports = (app) => {
 
   app.post('/api/import_r', rushController.csvImport);
   app.post('/api/upport_r', rushController.csvUpport);
+  app.post('/api/import_d', dataController.gshImport);
 };

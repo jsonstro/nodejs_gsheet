@@ -3,6 +3,7 @@ const csv = require('csv');
 const Rush = require('./server/models').RushOrders
 
 module.exports = {
+  test(req){console.log(req);},
   Import(file) {
     // const file = rush_test.csv
     const input = fs.createReadStream('./csv/'+file);

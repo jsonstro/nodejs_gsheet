@@ -9,7 +9,7 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const importCsv = require('./import_csv');
-const importGsh = require('./node_gsheet');
+const importGsh = require('./import_gsheet');
 
 const app = express()
 const port = 3000
