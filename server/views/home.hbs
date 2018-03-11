@@ -1,29 +1,80 @@
-<img src="inboard_logo.png" />
-<h2>Customer Service System</h2>
+<div style="width: 100%; text-align: center; margin-left: 25%">
+<div style="width: 50%; text-align: center;"><img src="inboard_logo.png" /></div><br style="clear: left;"/>
+<div style="width: 50%; text-align: center;"><h2 style="width: 100%; text-align: center">Order Tracking</h2></div><br style="clear: left;"/>
+<div style="width: 50%;">
+  <hr />
+  <div style="width:50%; border: 5px; float: left;"><h3>Search</h3></div><br style="clear: left;" />
   <form id="input" onsubmit="return false">
-    Deck S/N <input type="text" id="deck-sn" name="deck_sn" value="" style="width:10%"> <input class="button" id="user-submit" type="submit" value="Search"> <input class="button" id="user-clear" type="submit" value="Clear">
+    <div style="width:100px; border: 5px; float: left;">Deck S/N</div>
+    <div style="width:100px; border: 5px; float: left;">
+      <input type="text" id="deck-sn" name="deck_sn" value="" style="width:100px">
+    </div>
+    <div style="width:75px; border: 5px; float: left;">
+      <input class="button" id="user-submit" type="submit" value="Search">
+    </div>
+    <div style="width:225px; border: 5px; float: left;">
+      <input class="button" id="user-clear" type="submit" value="Clear">
+    </div><br style="clear: left;" />
   </form>
   <hr />
-  Rush Rec ID <input type="text" id="rrecid" style="width:30px;"> Data Rec ID <input type="text" id="drecid" style="width:30px;"><br />
-  Netsuite # <input type="text" id="netsuite"><br />
-  MFG Date <input type="text" id="mfgdate"><br />
-  Ship Date <input type="text" id="shipdate"><br />
-  Motor S/N L <input type="text" id="motorsnl"><br />
-  Motor S/N R <input type="text" id="motorsnr"><br />
-  FW Version <input type="text" id="fwversion"><br />
-  BCU Version <input type="text" id="bcuversion"><br />
+</div>
+<div style="width: 50%;">
+  <div style="width:100px; border: 5px; float: left;">Rush Rec ID</div><div style="width:50px; border: 5px; float: left;"><input type="text" id="rrecid" style="width:30px;"></div><div style="width:100px; border: 5px; float: left;">Data Rec ID</div><div style="width:50px; border: 5px; float: left;"><input type="text" id="drecid" style="width:30px;"></div>
+</div><br style="clear: left;" />
+<div style="width: 50%;">
+  <div style="width:100px; border: 5px; float: left;">MFG Date</div><div style="width:100px; border: 5px; float: left;"><input type="text" id="mfgdate"></div><br style="clear: left;"/>
+</div>
+<div style="width: 50%;">
+  <div style="width:100px; border: 5px; float: left;">Ship Date</div><div style="width:100px; border: 5px; float: left;"><input type="text" id="shipdate"></div><br style="clear: left;"/>
+</div>
+<div style="width: 50%;">
+  <div style="width:100px; border: 5px; float: left;">Motor S/N L</div><div style="width:100px; border: 5px; float: left;"><input type="text" id="motorsnl"></div><br style="clear: left;"/>
+</div>
+<div style="width: 50%;">
+  <div style="width:100px; border: 5px; float: left;">Motor S/N R</div><div style="width:100px; border: 5px; float: left;"><input type="text" id="motorsnr"></div><br style="clear: left;" />
+</div>
+<div style="width: 50%;">
+  <div style="width:100px; border: 5px; float: left;">FW Version</div><div style="width:100px; border: 5px; float: left;"><input type="text" id="fwversion"></div><br style="clear: left;" />
+</div>
+<div style="width: 50%;">
+  <div style="width:100px; border: 5px; float: left;">BCU Version</div><div style="width:100px; border: 5px; float: left;"><input type="text" id="bcuversion"></div><br style="clear: left;" />
+</div>
+<div style="width: 50%;">
+  <div style="width:100px; border: 5px; float: left;">Netsuite #</div><div style="width:100px; border: 5px; float: left;"><input type="text" id="netsuite"></div><br style="clear: left;" />
   <hr />
+</div>
+<div style="width: 50%;">
   <form id="upload">
-    <label for="myFile">Upload Rush CSV</label><br />
-    <input name="myFile" type="file"><input class="button" id="rush-upload" type="submit" value="Upload">
+    <div style="width:50%; border: 5px; float: left;"><label for="myFile"><h4>Upload Rush CSV</h4></label></div><br style="clear: left;" />
+    <div style="width:200px; border: 5px; float: left;">
+      <input name="myFile" type="file">
+   </div>
+  <div style="width:300px; border: 5px; float: left;">
+      <input class="button" id="rush-upload" type="submit" value="Upload">
+   </div>
   </form>
+</div><br style="clear: left;" />
+<div style="width: 50%;">
   <hr />
   <form id="import">
-    <label for="data-incremental">Import gSheet</label>
+  <div style="width:200px; border: 5px; float: left;">
+    <label for="data-incremental"><h4 style="display: inline;">Import gSheet</h4></label>
+  </div>
+  <div style="width:110px; border: 5px; float: left;">
     <input name="data-incremental" class="button" id="data-incremental" type="submit" value="Incremental">
-    <input name="data-full" class="button" id="data-full" type="submit" value="Full"><br />
-    <input type="text" id="csv-name" value="2017_mfg_data.csv" style="width:120px; font-size:.75em"><input name="data-import" class="button" id="data-import" type="submit" value="Initialize">
+  </div>
+  <div style="width:190px; border: 5px; float: left;">
+    <input name="data-full" class="button" id="data-full" type="submit" value="Full">
+  </div><br style="clear: left;" />
+  <div style="width:200px; border: 5px; float: left;">
+    <input type="text" id="csv-name" value="2017_mfg_data.csv" style="width:120px; font-size:.75em">
+  </div>
+  <div style="width:300px; border: 5px; float: left;">
+    <input name="data-import" class="button" id="data-import" type="submit" value="Initialize">
+  </div><br style="clear: left;" />
   </form>
+  <hr />
+</div>
 <!--
   Deck S/N <input type="text" id="decksn"><br />
   First Name <input type="text" id="firstname"><br />
@@ -32,3 +83,4 @@
   <textarea name="message" rows="10" cols="60">100 Central Ave. Santa Cruz, CA 95060</textarea>
   <br />
 -->
+</div>
