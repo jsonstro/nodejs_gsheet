@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>InBoard Customer Service System</title>
-    <link rel="icon" href="favicon.png"> 
+    <link rel="icon" href="favicon.png">
     <style>
     body {
         background-color: linen;
@@ -14,7 +14,7 @@
         color: black;
         border-radius: 12px;
         margin: 2px;
-    } 
+    }
     p {font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;}
     input[type=text] {
         font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
@@ -24,12 +24,42 @@
         margin: 1 0;
         box-sizing: border-box;
     }
-    div {text-align: left;}
+    div {
+      text-align: left;
+      border: 5px;
+      float: left;
+    }
+    .child {
+      width: 100px;
+    }
+    .child-sm {
+      width: 50px;
+    }
+    input.child-tiny {
+      width: 30px;
+    }
+    .wrapper {
+      width: 50%;
+    }
+    .header {
+      width: 50%;
+      text-align: center;
+    }
+    .holder {
+      width: 100%;
+      text-align: center;
+      margin-left: 25%;
+    }
+    br {
+      clear: left;
+    }
     h2 {
         font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
-        margin-top: -20px;
+        margin-top: 0px;
+        width: 100%;
+        text-align: center;
         color: maroon;
-    } 
+    }
     h3 {
         font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
         margin: 0;
@@ -44,16 +74,16 @@
     <script type="text/javascript">
       $(document).ready(function () {
         $('#user-clear').click(function () {
-          $('#deck-sn').val("");  
-          $('#mfgdate').val("");  
-          $('#motorsnl').val("");  
-          $('#motorsnr').val("");  
-          $('#fwversion').val("");  
-          $('#bcuversion').val("");  
-          $('#drecid').val("");  
-          $('#rrecid').val("");  
-          $('#netsuite').val("");  
-          $('#shipdate').val("");  
+          $('#deck-sn').val("");
+          $('#mfgdate').val("");
+          $('#motorsnl').val("");
+          $('#motorsnr').val("");
+          $('#fwversion').val("");
+          $('#bcuversion').val("");
+          $('#drecid').val("");
+          $('#rrecid').val("");
+          $('#netsuite').val("");
+          $('#shipdate').val("");
         });
         function postForm() {
           var payload = {

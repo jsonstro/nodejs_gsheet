@@ -73,11 +73,11 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
   // Daily API import of mfg gSheet
-  gshImport(req) {
+  gshImport(req, res) {
     importGsh.importRows(req.body.type);
   },
   // Pre-2018 mfg data
-  csvImport(req) {
+  csvImport(req, res) {
     importCsv.Import(req.body.csv_name);
   },
 };

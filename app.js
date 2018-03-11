@@ -33,12 +33,8 @@ app.use(express.static('public/images'));
 
 require('./server/routes')(app);
 
-app.get('/', (request, response) => {
-  response.render('home', {
-    //fname: 'John',
-    //lname: 'Doe',
-    //address: '123 Basic St.\nSanta Cruz, CA 95060',
-  })
+app.get('/', (req, res) => {
+  res.render('home', {})
 })
 
 // setup the logger

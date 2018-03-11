@@ -18,40 +18,44 @@ module.exports = {
       })
       const transform = csv.transform(row => {
         const resultObj = {
-          date: row[''], //a
-          deck_sn: row[''],
-          motor_sn_l: row[''],
-          motor_sn_r: row[''], //d
-          motor_failure_code: row[''],
-          motor_comments: row[''],
-          motor_qa_sign_off: row[6],
-          ma1_date: row[7],
-          bcu_version: row[8], //i
-          fw_version: row[9],
-          main_board_sn: row[10],
-          ma_failure_code: row[11],
-          ma_comments: row[12],
-          ma_qa_sign_off: row[13],
-          pkg_date: row[14], //o
-          remote_sn: row[15],
-          battery_sn: row[16],
-          battery_failure_code: row[17],
-          battery_comments: row[18],
-          battery_qa_sign_off: row[19],
-          rflx_date: row[20], //u
-          pcba_sn: row[21],
-          external_sn: row[22],
-          rflx_failure_code: row[23],
-          rflx_comments: row[24],
-          rflx_qa_sign_off: row[25],
-          last_gdoc_row_id: rows.length,
+          date: row['-'], //a
+          deck_sn: row['Deck SN'],
+          motor_sn_l: row['Motor S/N (L)'],
+          motor_sn_r: row['Motor S/N (R)'], //d
+          //motor_failure_code: row[''],
+          motor_comments: row['Comments'],
+          //motor_qa_sign_off: row[''],
+          // ma1_date: row['MA1 Date'],
+          //bcu_version: row[''], //i
+          fw_version: row['FW'],
+          main_board_sn: row['Main Board S/N'],
+          //ma_failure_code: row[''],
+          //ma_comments: row[''],
+          //ma_qa_sign_off: row[''],
+          // pkg_date: row['PKG Date'], //o
+          remote_sn: row['Remote S/N'],
+          battery_sn: row['Battery S/N'],
+          //battery_failure_code: row[''],
+          //battery_comments: row[''],
+          //battery_qa_sign_off: row[''],
+          //rflx_date: row[''], //u
+          //pcba_sn: row[''],
+          //external_sn: row[''],
+          //rflx_failure_code: row[''],
+          //rflx_comments: row[''],
+          //rflx_qa_sign_off: row[''],
+          last_gdoc_row_id: 0,
           created_by: "inboard",
         }
         //console.log(resultObj);
         Data.create(resultObj)
-          .then(rush => res.status(201).send(rush))
-          .catch(err => console.error(err))
+          //.then(deck => res.status(201).send(deck))
+          .catch(err => {
+            console.log("--> Row SN: "+row['Deck SN']);
+            console.error(err);
+          })
       })
+      input.pipe(parser).pipe(transform);
     } else {
       // Rush data model import of monthly CSV
       const parser = csv.parse({
@@ -80,11 +84,11 @@ module.exports = {
           created_by: "inboard",
         }
         Rush.create(resultObj)
-          .then(rush => res.status(201).send(rush))
+          //.then(rush => res.status(201).send(rush))
           .catch(err => console.error(err))
       })
+      input.pipe(parser).pipe(transform)
     }
 
-    input.pipe(parser).pipe(transform)
   }
 }

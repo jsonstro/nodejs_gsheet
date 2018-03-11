@@ -66,7 +66,7 @@ module.exports = {
       })
       .catch(error => res.status(400).send(error));
   },
-  csvUpport(req) {
+  csvUpport(req, res) {
     const data = req.body.data;
     const filename = req.body.filename;
    
@@ -80,7 +80,7 @@ module.exports = {
     importCsv.Import(filename);
     });
   },
-  csvImport(req) {
+  csvImport(req, res) {
     importCsv.Import(req.body.csv_name);
   },
 };

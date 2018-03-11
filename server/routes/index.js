@@ -4,6 +4,10 @@ const rushController = require('../controllers').rush;
 const versController = require('../controllers').vers;
 
 module.exports = (app) => {
+  app.get('/', (req, res) => {  
+    res.render('home', {})
+  })
+
   app.get('/api', (req, res) => res.status(200).send({
     message: 'Welcome to the InBoard Customer Service API!',
   }));
