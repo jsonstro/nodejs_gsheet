@@ -19,11 +19,11 @@ module.exports = {
       const transform = csv.transform(row => {
         const resultObj = {
           date: row[''], //a
-          deck_sn: row[1],
-          motor_sn_l: row[2],
-          motor_sn_r: row[3], //d
-          motor_failure_code: row[4],
-          motor_comments: row[5],
+          deck_sn: row[''],
+          motor_sn_l: row[''],
+          motor_sn_r: row[''], //d
+          motor_failure_code: row[''],
+          motor_comments: row[''],
           motor_qa_sign_off: row[6],
           ma1_date: row[7],
           bcu_version: row[8], //i
