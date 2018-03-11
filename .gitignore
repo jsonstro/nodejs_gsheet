@@ -2,3 +2,4 @@ credentials.json
 node_modules/
 server/config/config.json
 csv/2017_mfg_data.csv
+*.log

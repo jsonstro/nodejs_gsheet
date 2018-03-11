@@ -51,8 +51,10 @@ module.exports = {
         Data.create(resultObj)
           //.then(deck => res.status(201).send(deck))
           .catch(err => {
-            console.log("--> Row SN: "+row['Deck SN']);
-            console.error(err);
+            //console.log("--> Row SN: "+row['Deck SN']);
+            fs.appendFile('data_error.log', JSON.stringify(err.name)+": "+JSON.stringify(err.errors)+"\n", (e) => {} 
+            );
+            //console.error(err);
           })
       })
       input.pipe(parser).pipe(transform);
@@ -85,7 +87,12 @@ module.exports = {
         }
         Rush.create(resultObj)
           //.then(rush => res.status(201).send(rush))
-          .catch(err => console.error(err))
+          .catch(err => {
+            //console.log("--> Row SN: "+row['serial']);
+            fs.appendFile('rush_error.log', JSON.stringify(err.name)+": "+JSON.stringify(err.errors)+"\n", (e) => {}
+            );
+            //console.error(err);
+          })
       })
       input.pipe(parser).pipe(transform)
     }

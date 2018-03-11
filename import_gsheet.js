@@ -179,8 +179,13 @@ module.exports = {
                   created_by: "inboard",
                 }
                 Data.create(resultObj)
-                .then(rush => res.status(201).send(rush))
-                .catch(err => console.error(err));
+                //.then(rush => res.status(201).send(rush))
+                .catch(err => {
+                  //console.log("--> Row SN: "+row['serial']);
+                  fs.appendFile('data_error.log', JSON.stringify(err.name)+": "+JSON.stringify(err.errors)+"\n", (e) => {}
+                  );
+                  //console.error(err)
+                });
               }
               c += 1;
             }

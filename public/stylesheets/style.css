@@ -1,8 +1,73 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+  font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
-
+body {
+    background-color: linen;
+}
+.button {
+    font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-size: 1em;
+    background-color: #e7e7e7;
+    color: black;
+    border-radius: 12px;
+    margin: 2px;
+}
 a {
   color: #00B7FF;
+}
+p {
+  font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+input[type=text] {
+  font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 1em;
+  width: 240px;
+  padding: 2px;
+  margin: 1 0;
+  box-sizing: border-box;
+}
+div {
+  text-align: left;
+  border: 5px;
+  float: left;
+}
+.child {
+  width: 100px;
+}
+.child-sm {
+  width: 50px;
+}
+input.child-tiny {
+  width: 30px;
+}
+.wrapper {
+  width: 50%;
+}
+.header {
+  width: 50%;
+  text-align: center;
+}
+.holder {
+  width: 100%;
+  text-align: center;
+  margin-left: 25%;
+}
+br {
+  clear: left;
+}
+h2 {
+  font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
+  margin-top: 0px;
+  width: 100%;
+  text-align: center;
+  color: maroon;
+}
+h3 {
+  font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
+  margin: 0;
+}
+h4 {
+  font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
+  padding-bottom: 2px;
+  margin: 0;
 }

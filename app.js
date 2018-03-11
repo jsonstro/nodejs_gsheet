@@ -42,9 +42,9 @@ app.use(logger('dev'));
 //app.use(logger('dev', {
 //  skip: function (req, res) { return res.statusCode < 400 }
 //}))
-//app.use(logger('common', {
-//  stream: fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'})
-//}))
+app.use(logger('common', {
+  stream: fs.createWriteStream(path.join(__dirname, 'access.log'), {flags: 'a'})
+}))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
