@@ -33,7 +33,7 @@ div {
   float: left;
 }
 .label {
-  width: 40%;
+  width: 30%;
 }
 .child {
   width: 100px;
@@ -45,18 +45,18 @@ input.child-tiny {
   width: 65px;
 }
 .wrapper {
-  width: 40%;
+  width: 30%;
   min-width: 420px;
 }
 .header {
-  width: 40%;
+  width: 30%;
   text-align: center;
   min-width: 420px;
 }
 .holder {
   width: 100%;
   text-align: center;
-  margin-left: 30%;
+  margin-left: 35%;
   min-width: 420px;
 }
 br {
