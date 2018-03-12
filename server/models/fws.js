@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   var FWs = sequelize.define('FWs', {
     fw_version: {
       type: DataTypes.TEXT,
+      allowNull: false,
       primaryKey: true
     },
   }, {});

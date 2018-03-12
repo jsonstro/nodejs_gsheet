@@ -6,9 +6,10 @@ body {
 }
 .button {
     font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
+    color: #e7e7e7;
     font-size: 1em;
-    background-color: #e7e7e7;
-    color: black;
+    /*background-color: #e7e7e7; */
+    background-color: #E5002E;
     border-radius: 12px;
     margin: 2px;
 }
@@ -31,26 +32,32 @@ div {
   border: 5px;
   float: left;
 }
+.label {
+  width: 40%;
+}
 .child {
   width: 100px;
 }
 .child-sm {
-  width: 50px;
+  width: 75px;
 }
 input.child-tiny {
-  width: 30px;
+  width: 65px;
 }
 .wrapper {
-  width: 50%;
+  width: 40%;
+  min-width: 420px;
 }
 .header {
-  width: 50%;
+  width: 40%;
   text-align: center;
+  min-width: 420px;
 }
 .holder {
   width: 100%;
   text-align: center;
-  margin-left: 25%;
+  margin-left: 30%;
+  min-width: 420px;
 }
 br {
   clear: left;
@@ -60,7 +67,7 @@ h2 {
   margin-top: 0px;
   width: 100%;
   text-align: center;
-  color: maroon;
+  color: #E5002E;
 }
 h3 {
   font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;

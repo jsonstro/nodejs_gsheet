@@ -16,11 +16,15 @@ module.exports = (app) => {
   app.post('/api/user', userController.create);
   app.post('/api/rush', rushController.create);
   app.post('/api/version', versController.create);
+  app.post('/api/fw', versController.createFw);
+  app.post('/api/bcu', versController.createBcu);
 
   app.get('/api/data', dataController.list);
   app.get('/api/user', userController.list);
   app.get('/api/rush', rushController.list);
   app.get('/api/version', versController.list);
+  app.get('/api/fw', versController.listFw);
+  app.get('/api/bcu', versController.listBcu);
 
   app.get('/api/rush/:deck_sn', rushController.retrieve);
   app.get('/api/data/:deck_sn', dataController.retrieve);

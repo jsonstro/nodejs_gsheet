@@ -8,11 +8,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     bcu_version: {
       type: DataTypes.TEXT,
+      allowNull: false,
       primaryKey: true
     },
     fw_version: {
       type: DataTypes.TEXT,
-      primaryKey: true,
+      allowNull: false,
+      primaryKey: true
     },
     date_changed: DataTypes.DATE
   }, {});

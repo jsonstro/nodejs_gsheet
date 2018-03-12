@@ -1,6 +1,7 @@
 # pg_ctl -D /usr/local/var/postgres start
 # pg_ctl -D /usr/local/var/postgres stop
 # brew services start postgresql
+
 # node_modules/.bin/sequelize init
 # node_modules/.bin/sequelize model:create --name FWs --attributes fw_version:text
 # node_modules/.bin/sequelize model:create --name BCUs --attributes bcu_version:text
@@ -8,6 +9,10 @@
 # node_modules/.bin/sequelize model:create --name Data --attributes created_by:text,last_gdoc_row_id:int,date:date,,deck_sn:int\(8\),motor_sn_l:text,motor_sn_r:text,motor_failure_code:text,motor_comments:text,motor_qa_sign_off:text,ma1_date:date,bcu_version:text,fw_version:text,main_board_sn:text,ma_failure_code:text,ma_comments:text,ma_qa_sign_off:text,pkg_date:date,remote_sn:text,battery_sn:text,battery_failure_code:text,battery_comments:text,battery_qa_sign_off:text,rflx_date:date,pcba_sn:text,external_sn:text,rflx_failure_code:text,rflx_comments:text,rflx_qa_sign_off:text
 # node_modules/.bin/sequelize model:create --name Versions --attributes bcu_version:text,fw_version:text,date_changed:datetime
 # node_modules/.bin/sequelize model:create --name RushOrders --attributes created_by:text,deck_sn:int,ordernum:text,alternateid:text,internalid:text,shipvia:text,weight:text,trackingnu:text,shipdate:date,item:text,qty_order:int,qty_fulfil:int,partialful:text,fully_fulf:text
+
+# node_modules/.bin/sequelize migration:create --name add-type-to-user
+# node_modules/.bin/sequelize migration:create --name add-created-by-to-versions
+# node_modules/.bin/sequelize db:migrate
 
 # psql postgres
 CREATE ROLE inboard with LOGIN PASSWORD '<PASSWORD>';
@@ -20,15 +25,18 @@ GRANT ALL PRIVILEGES ON DATABASE inboard TO inboard;
 \connect inboard
 \dt
 \q
-# sequelize db:migrate
 
-curl -v -H "Content-Type: application/json" -X POST -d '{"bcu_version":"2.0.1", "fw_version":"2.3.6","date_changed":"11/15/17"}' http://localhost:3000/api/version
-curl -v -H "Content-Type: application/json" -X POST -d '{"deck_sn":"01234570", "last_gdoc_row_id":"19", "date":"2/3/2018", "motor_sn_l":"3423445", "motor_sn_r":"27547890", "bcu_version":"1.1.3", "fw_version":"2.0.5", "main_board_sn":"a123343", "pkg_date":"2/6/2018", "remote_sn":"1232435", "battery_sn":"0983473", "rflx_date":"2/7/2018", "pcba_sn":"8937473d", "external_sn":"93483774"}' http://localhost:3000/api/data
-curl -v -H "Content-Type: application/json" -X POST -d '{"deck_sn":"01234567"}' http://localhost:3000/api/rush
-curl -v -H "Content-Type: application/json" -X POST -d '{"username": "inboard", "firstname": "In", "lastname": "Board", "passwd": "9c78f42e614792df038997daa76266a4"}' http://localhost:3000/api/user
-curl -v -H "Content-Type: application/json" -X GET http://localhost:3000/api/rush/1234569
-curl -v -H "Content-Type: application/json" -X GET http://localhost:3000/api/data/1234569
-curl -v -H "Content-Type: application/json" -X GET http://localhost:3000/api/rush
-curl -v -H "Content-Type: application/json" -X GET http://localhost:3000/api/data
-curl -v -H "Content-Type: application/json" -X GET http://localhost:3000/api/user
-curl -v -H "Content-Type: application/json" -X GET http://localhost:3000/api/version
+# curl -v -H "Content-Type: application/json" -X POST -d '{"bcu_version":"2.0.2"}' http://localhost:3000/api/bcu
+# curl -v -H "Content-Type: application/json" -X POST -d '{"fw_version":"2.3.6"}' http://localhost:3000/api/fw
+# curl -v -H "Content-Type: application/json" -X POST -d '{"bcu_version":"2.0.1", "fw_version":"2.3.6", "date_changed":"11/15/17"}' http://localhost:3000/api/version
+# curl -v -H "Content-Type: application/json" -X POST -d '{"deck_sn":"01234570", "last_gdoc_row_id":"19", "date":"2/3/2018", "motor_sn_l":"3423445", "motor_sn_r":"27547890", "bcu_version":"1.1.3", "fw_version":"2.0.5", "main_board_sn":"a123343", "pkg_date":"2/6/2018", "remote_sn":"1232435", "battery_sn":"0983473", "rflx_date":"2/7/2018", "pcba_sn":"8937473d", "external_sn":"93483774"}' http://localhost:3000/api/data
+# curl -v -H "Content-Type: application/json" -X POST -d '{"deck_sn":"01234567"}' http://localhost:3000/api/rush
+# curl -v -H "Content-Type: application/json" -X POST -d '{"username": "inboard", "firstname": "In", "lastname": "Board", "passwd": "<PASSWORD>"}' http://localhost:3000/api/user
+# curl -v -H "Content-Type: application/json" -X GET http://localhost:3000/api/rush/1234569
+# curl -v -H "Content-Type: application/json" -X GET http://localhost:3000/api/data/1234569
+# curl -v -H "Content-Type: application/json" -X GET http://localhost:3000/api/rush
+# curl -v -H "Content-Type: application/json" -X GET http://localhost:3000/api/data
+# curl -v -H "Content-Type: application/json" -X GET http://localhost:3000/api/user
+# curl -v -H "Content-Type: application/json" -X GET http://localhost:3000/api/version
+# curl -v -H "Content-Type: application/json" -X GET http://localhost:3000/api/bcu
+# curl -v -H "Content-Type: application/json" -X GET http://localhost:3000/api/fw

@@ -3,7 +3,8 @@ module.exports = (sequelize, DataTypes) => {
   var BCUs = sequelize.define('BCUs', {
     bcu_version: {
       type: DataTypes.TEXT,
-      primaryKey: true
+      primaryKey: true,
+      allowNull: false
     },
   }, {});
   BCUs.associate = function(models) {
