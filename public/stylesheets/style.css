@@ -27,6 +27,14 @@ input[type=text] {
   margin: 1 0;
   box-sizing: border-box;
 }
+input[type=textarea] {
+  font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 1em;
+  width: 240px;
+  padding: 2px;
+  margin: 1 0;
+  box-sizing: border-box;
+}
 div {
   text-align: left;
   border: 5px;
