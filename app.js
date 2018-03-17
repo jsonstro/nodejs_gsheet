@@ -33,10 +33,6 @@ app.use(express.static('public/images'));
 
 require('./server/routes')(app);
 
-app.get('/', (req, res) => {
-  res.render('home', {})
-})
-
 // setup the logger
 app.use(logger('dev'));
 //app.use(logger('dev', {

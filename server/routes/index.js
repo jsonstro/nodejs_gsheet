@@ -8,7 +8,7 @@ module.exports = (app) => {
     res.render('home', {})
   })
   app.get('/admin', (req, res) => {  
-    res.render('admin', {})
+    res.render('admin', { layout: 'admin' })
   })
 
   app.get('/api', (req, res) => res.status(200).send({

@@ -1,0 +1,97 @@
+* {
+  font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+body {
+    background-color: linen;
+}
+.button {
+    font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
+    color: #e7e7e7;
+    font-size: 1em;
+    /*background-color: #e7e7e7; */
+    background-color: #E5002E;
+    border-radius: 12px;
+    margin: 2px;
+}
+a {
+  color: #00B7FF;
+}
+p {
+  font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+input[type=text] {
+  font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 1em;
+  width: 240px;
+  padding: 2px;
+  margin: 1 0;
+  box-sizing: border-box;
+}
+input[type=textarea] {
+  font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 1em;
+  width: 240px;
+  padding: 2px;
+  margin: 1 0;
+  box-sizing: border-box;
+}
+div {
+  text-align: left;
+  border: 5px;
+  float: left;
+}
+.label {
+  width: 30%;
+}
+.child {
+  width: 100px;
+}
+.child-wide {
+  width: 240px;
+}
+.child-sm {
+  width: 75px;
+}
+.child-sm2 {
+  width: 65px;
+}
+input.child-tiny {
+  width: 65px;
+}
+.wrapper {
+  width: 40%;
+  min-width: 680px;
+}
+.header {
+  width: 40%;
+  text-align: center;
+  min-width: 680px;
+}
+.holder {
+  width: 100%;
+  text-align: center;
+  margin-left: 30%;
+  min-width: 680px;
+}
+.rush {
+  color: darkblue; 
+}
+br {
+  clear: left;
+}
+h2 {
+  font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
+  margin-top: 0px;
+  width: 100%;
+  text-align: center;
+  color: #E5002E;
+}
+h3 {
+  font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
+  margin: 0;
+}
+h4 {
+  font-family: Nunito,Helvetica Neue,Helvetica,Arial,sans-serif;
+  padding-bottom: 2px;
+  margin: 0;
+}

@@ -1,7 +1,6 @@
-<!--//* admin *//--> 
 <div class="holder">
   <div class="header"><img src="inboard_logo.png" /></div><br />
-  <div class="header"><h2>Order Tracking</h2></div><br />
+  <div class="header"><h2>Admin Order Tracking</h2></div><br />
   <div class="wrapper">
     <hr />
     <div class="label"><h3>Search</h3></div><br />
@@ -21,31 +20,56 @@
   </div><br />
   <div class="label"><h3>Results</h3></div><br />
   <div class="wrapper">
-    <div class="child">Rush Rec ID</div><div class="child-sm"><input type="text" id="rrecid" class="child-tiny"></div>
-    <div class="child">Data Rec ID</div><div class="child-sm"><input type="text" id="drecid" class="child-tiny"></div>
+    <div class="child">Rush Rec ID</div><div class="child-sm"><input type="text" id="rrecid" class="child-tiny rush"></div>
+    <div class="child">Data Rec ID</div><div class="child-sm2"><input type="text" id="drecid" class="child-tiny"></div>
+    <div class="child">&nbsp;Item</div><div class="child-wide"><input class="rush" type="text" id="item"></div>
   </div><br />
   <div class="wrapper">
-    <div class="child">MFG Date</div><div class="child"><input type="text" id="mfgdate"></div>
+    <div class="child">MFG Date</div><div class="child-wide"><input type="text" id="mfgdate"></div>
+    <div class="child">&nbsp;Ship Date</div><div class="child-wide"><input type="text" id="shipdate"></div>
   </div><br />
   <div class="wrapper">
-    <div class="child">Ship Date</div><div class="child"><input type="text" id="shipdate"></div>
+    <div class="child">Motor S/N L</div><div class="child-wide"><input type="text" id="motorsnl"></div>
+    <div class="child">&nbsp;Motor S/N R</div><div class="child-wide"><input type="text" id="motorsnr"></div>
   </div><br />
   <div class="wrapper">
-    <div class="child">Motor S/N L</div><div class="child"><input type="text" id="motorsnl"></div>
+    <div class="child">FW Version</div><div class="child-wide"><input type="text" id="fwversion"></div>
+    <div class="child">&nbsp;BCU Version</div><div class="child-wide"><input type="text" id="bcuversion"></div>
   </div><br />
   <div class="wrapper">
-    <div class="child">Motor S/N R</div><div class="child"><input type="text" id="motorsnr"></div>
+    <div class="child">Netsuite #</div><div class="child-wide"><input class="rush" type="text" id="netsuite"></div>
+    <div class="child">&nbsp;Order #</div><div class="child-wide"><input class="rush" type="text" id="ordernum"></div>
   </div><br />
   <div class="wrapper">
-    <div class="child">FW Version</div><div class="child"><input type="text" id="fwversion"></div>
+    <div class="child">Internal Id</div><div class="child-wide"><input class="rush" type="text" id="internalid"></div>
+    <div class="child">&nbsp;Ship Via</div><div class="child-wide"><input class="rush" type="text" id="shipvia"></div>
   </div><br />
   <div class="wrapper">
-    <div class="child">BCU Version</div><div class="child"><input type="text" id="bcuversion"></div>
+    <div class="child">Weight</div><div class="child-wide"><input type="text" class="rush" id="weight"></div>
+    <div class="child">&nbsp;Tracking #</div><div class="child-wide"><input class="rush" type="text" id="trackingnu"></div>
   </div><br />
   <div class="wrapper">
-    <div class="child">Netsuite #</div><div class="child"><input type="text" id="netsuite"></div><br />
+    <div class="child">Qty Ordered</div><div class="child-wide"><input class="rush" type="text" id="qty_order"></div>
+    <div class="child">&nbsp;Qty Fulfilled</div><div class="child-wide"><input class="rush" type="text" id="qty_fulfil"></div>
+  </div><br />
+  <div class="wrapper">
+    <div class="child">Part Fulfilled</div><div class="child-wide"><input class="rush" type="text" id="partialful"></div>
+    <div class="child">&nbsp;Fully Fulfilled</div><div class="child"><input class="rush" type="text" id="fully_fulf"></div><br />
+  </div><br />
+  <div class="wrapper">
+    <div class="child"></div><div class="child"><input type="text" id=""></div><br />
     <hr />
   </div><br />
+<!--  <div class="wrapper">
+    <div class="child">First Name</div><div class="child"><input type="text" id="firstname"></div>
+  </div><br />
+  <div class="wrapper">
+    <div class="child">Last Name</div><div class="child"><input type="text" id="lastname"></div><br />
+  </div><br />
+  <div class="wrapper">
+    <div class="child" style="width:100px>Customer Address:</div><br />
+    <div class="child" style="width:300px; float: left; display: block;"><textarea name="message" rows="3" cols="60">100 Central Ave. Santa Cruz, CA 95060</textarea></div>
+  </div><br /> -->
   <div class="wrapper">
     <form id="upload">
       <div class="label"><label for="myFile"><h4>Upload Rush CSV</h4></label></div><br />
@@ -107,12 +131,4 @@
     </form>
     <hr />
   </div>
-  <!--
-    Deck S/N <input type="text" id="decksn"><br />
-    First Name <input type="text" id="firstname"><br />
-    Last Name <input type="text" id="lastname"><br />
-    Customer Address:<br />
-    <textarea name="message" rows="10" cols="60">100 Central Ave. Santa Cruz, CA 95060</textarea>
-    <br />
-  -->
 </div>
