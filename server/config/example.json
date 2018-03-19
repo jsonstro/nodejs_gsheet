@@ -1,0 +1,18 @@
+{
+  "development": {
+    "username": "inboard",
+    "password": null,
+    "database": "inboard",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "inboard",
+    "password": null,
+    "database": "inboard-test",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres"
+  }
+}
