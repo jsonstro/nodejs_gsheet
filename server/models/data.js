@@ -1,13 +1,18 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Data = sequelize.define('Data', {
-    id: DataTypes.INTEGER,
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+    },
     created_by: DataTypes.TEXT,
     last_gdoc_row_id: DataTypes.INTEGER,
     date: DataTypes.DATE,
     deck_sn: {
       type: DataTypes.INTEGER(8), 
-      primaryKey: true},
+      primaryKey: true,
+    },
     motor_sn_l: DataTypes.TEXT,
     motor_sn_r: DataTypes.TEXT,
     motor_failure_code: DataTypes.TEXT,
