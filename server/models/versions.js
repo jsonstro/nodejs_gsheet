@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       primaryKey: true
     },
-    date_changed: DataTypes.DATE
+    date_changed: DataTypes.DATE,
+    created_by: DataTypes.TEXT
   }, {});
   Versions.associate = function(models) {
     // associations can be defined here

@@ -16,11 +16,39 @@ $(document).ready(function () {
     $('#weight').val("");
     $('#trackingnu').val("");
     $('#item').val("");
-    $('#qty_order').val("");
-    $('#qty_fulfil').val("");
-    $('#partialful').val("");
-    $('#fully_fulf').val("");
+    $('#motor_comments').val("");
+    $('#motor_failure_code').val("");
+    $('#main_board_sn').val("");
+    $('#ma_comments').val("");
+    $('#ma_failure_code').val("");
+    $('#battery_comments').val("");
+    $('#battery_failure_code').val("");
+    $('#battery_sn').val("");
+    $('#remote_sn').val("");
+    $('#firstname').val("");
+    $('#lastname').val("");
+    $('#addr').val("");
+    $('#addr2').val("");
+    $('#city').val("");
+    $('#state').val("");
+    $('#zipcode').val("");
+    $('#cntry').val("");
+    $('#inpart').val("");
+    $('#email').val("");
+    $('#phone').val("");
+    $('#spc_code').val("");
+    $('#ship_first').val("");
+    $('#ship_last').val("");
+    $('#ship_addr').val("");
+    $('#ship_addr2').val("");
+    $('#ship_city').val("");
+    $('#ship_st').val("");
+    $('#ship_zip').val("");
+    $('#ship_ctry').val("");
   });
+  function pad(n) {
+    return n<10 ? '0'+n : n
+  }
   function postForm() {
     var payload = {
       deck_sn: $('#deck-sn').val()
@@ -34,7 +62,12 @@ $(document).ready(function () {
       complete: function (data) {
         const a = JSON.parse(data.responseText, (key, value) => {
           if (key === "date") {
-            $('#mfgdate').val(value);
+            var currentDate = new Date(value);
+            var date = currentDate.getDate();
+            var month = currentDate.getMonth();
+            var year = currentDate.getFullYear();
+            var mmddyyyy = pad(month + 1) + "/" + pad(date) + "/" + year;
+            $('#mfgdate').val(mmddyyyy);
           } else if (key === "motor_sn_l") {
             $('#motorsnl').val(value);
           } else if (key === "motor_sn_r") {
@@ -43,6 +76,24 @@ $(document).ready(function () {
             $('#fwversion').val(value);
           } else if (key === "bcu_version") {
             $('#bcuversion').val(value);
+          } else if (key === "battery_sn") {
+            $('#battery_sn').val(value);
+          } else if (key === "remote_sn") {
+            $('#remote_sn').val(value);
+          } else if (key === "main_board_sn") {
+            $('#main_board_sn').val(value);
+          } else if (key === "ma_comments") {
+            $('#ma_comments').val(value);
+          } else if (key === "ma_failure_code") {
+            $('#ma_failure_code').val(value);
+          } else if (key === "battery_comments") {
+            $('#battery_comments').val(value);
+          } else if (key === "battery_failure_code") {
+            $('#battery_failure_code').val(value);
+          } else if (key === "motor_comments") {
+            $('#motor_comments').val(value);
+          } else if (key === "motor_failure_code") {
+            $('#motor_failure_code').val(value);
           } else if (key === "id") {
             $('#drecid').val(value);
           }
@@ -59,8 +110,64 @@ $(document).ready(function () {
         const a = JSON.parse(data.responseText, (key, value) => {
           if (key === "alternateid") {
             $('#netsuite').val(value);
+          } else if (key === "firstname") {
+            $('#firstname').val(value);
+          } else if (key === "lastname") {
+            $('#lastname').val(value);
+          } else if (key === "company") {
+            $('#company').val(value);
+          } else if (key === "ordernum") {
+            $('#ordernum').val(value);
+          } else if (key === "internalid") {
+            $('#internalid').val(value);
+          } else if (key === "trackingnu") {
+            $('#trackingnu').val(value);
+          } else if (key === "item") {
+            $('#item').val(value);
+          } else if (key === "addr") {
+            $('#addr').val(value);
+          } else if (key === "addr2") {
+            $('#addr2').val(value);
+          } else if (key === "city") {
+            $('#city').val(value);
+          } else if (key === "state") {
+            $('#state').val(value);
+          } else if (key === "zipcode") {
+            $('#zipcode').val(value);
+          } else if (key === "cntry") {
+            $('#cntry').val(value);
           } else if (key === "shipdate") {
-            $('#shipdate').val(value);
+            var currentDate = new Date(value);
+            var date = currentDate.getDate();
+            $('#shipdate').val(date);
+            var month = currentDate.getMonth();
+            var year = currentDate.getFullYear();
+            var mmddyyyy = pad(month + 1) + "/" + pad(date) + "/" + year;
+            $('#shipdate').val(mmddyyyy);
+          } else if (key === "email") {
+            $('#email').val(value);
+          } else if (key === "phone") {
+            $('#phone').val(value);
+          } else if (key === "spc_code") {
+            $('#spc_code').val(value);
+          } else if (key === "inpart") {
+            $('#inpart').val(value);
+          } else if (key === "ship_first") {
+            $('#ship_first').val(value);
+          } else if (key === "ship_last") {
+            $('#ship_last').val(value);
+          } else if (key === "ship_addr") {
+            $('#ship_addr').val(value);
+          } else if (key === "ship_addr2") {
+            $('#ship_addr2').val(value);
+          } else if (key === "ship_city") {
+            $('#ship_city').val(value);
+          } else if (key === "ship_st") {
+            $('#ship_st').val(value);
+          } else if (key === "ship_zip") {
+            $('#ship_zip').val(value);
+          } else if (key === "ship_ctry") {
+            $('#ship_ctry').val(value);
           } else if (key === "id") {
             $('#rrecid').val(value);
           }
