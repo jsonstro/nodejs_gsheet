@@ -3,6 +3,5 @@ node_modules/
 server/config/config.json
 csv/2017_mfg_data.csv
 csv/2016-18_mfg_data.csv
-csv/rush_final.csv
-csv/rush_tst2.csv
+csv/rush_*.csv
 *.log
