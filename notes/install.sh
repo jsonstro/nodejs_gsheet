@@ -6,6 +6,7 @@ yum install open-vm-tools wget git postgresql-server nginx certbot-nginx
 postgresql-setup initdb
 
 # set both host and local auth to 'md5'
+echo "Open 'pg_hba.conf' and set both host and local auth to 'md5'"
 vi /var/lib/pgsql/data/pg_hba.conf 
 
 service postgresql start
@@ -61,5 +62,6 @@ vi /etc/ssh/sshd_config
 firewall-cmd --zone=public --add-service=http --permanent
 firewall-cmd --zone=public --add-service=http
 
+firewall-cmd --zone=public --add-port=3000/tcp
 #firewall-cmd --zone=public --add-port=3000/tcp --permanent
 #firewall-cmd --zone=public --remove-port=3000/tcp --permanent
