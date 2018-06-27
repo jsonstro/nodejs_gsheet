@@ -4,4 +4,6 @@ server/config/config.json
 csv/2017_mfg_data.csv
 csv/2016-18_mfg_data.csv
 csv/rush_*.csv
+csv/errors/
+csv/rush_split/
 *.log

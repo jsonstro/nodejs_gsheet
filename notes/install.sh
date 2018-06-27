@@ -6,7 +6,7 @@ yum install open-vm-tools wget git postgresql-server nginx certbot-nginx
 postgresql-setup initdb
 
 # set both host and local auth to 'md5'
-echo "Open 'pg_hba.conf' and set both host and local auth to 'md5'"
+echo "Open 'pg_hba.conf' and set both host and local auth to 'trust'"
 vi /var/lib/pgsql/data/pg_hba.conf 
 
 service postgresql start
