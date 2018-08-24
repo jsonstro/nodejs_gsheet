@@ -72,6 +72,23 @@ module.exports = {
       })
       .catch(error => res.status(400).send(error));
   },
+  fetchbybattery(req, res) {
+    return Deck
+      .findAll({
+        where: {
+          battery_sn: req.body.battery_sn
+        }
+      })
+      .then(deck => {
+        if (!deck) {
+          return res.status(404).send({
+            message: 'Battery SN Not Found in Data Table',
+          });
+        }
+        return res.status(200).send(deck);
+      })
+      .catch(error => res.status(400).send(error));
+  },
   // Daily API import of mfg gSheet
   gshImport(req, res) {
     importGsh.importRows(req.body.type);

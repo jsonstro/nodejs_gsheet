@@ -34,6 +34,7 @@ module.exports = (app) => {
 
   app.post('/api/form_d', dataController.fetch);
   app.post('/api/form_r', rushController.fetch);
+  app.post('/api/bform_d', dataController.fetchbybattery);
 
   app.post('/api/import_d', dataController.gshImport);
   app.post('/api/import_p', dataController.csvImport);

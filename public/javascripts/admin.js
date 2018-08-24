@@ -45,6 +45,8 @@ $(document).ready(function () {
     $('#ship_st').val("");
     $('#ship_zip').val("");
     $('#ship_ctry').val("");
+    $('#underwarranty').val("");
+    $('#shipage').val("");
   });
   function pad(n) {
     return n<10 ? '0'+n : n
@@ -107,6 +109,7 @@ $(document).ready(function () {
       processData: false,
       data: JSON.stringify(payload),
       complete: function (data) {
+        //const days = 0;
         const a = JSON.parse(data.responseText, (key, value) => {
           if (key === "alternateid") {
             $('#netsuite').val(value);
@@ -136,7 +139,13 @@ $(document).ready(function () {
             $('#zipcode').val(value);
           } else if (key === "cntry") {
             $('#cntry').val(value);
+            if (value === "UK") {
+              if (Math.round(days) < 730) {
+                $('#underwarranty').val('Yes')
+              }
+            }
           } else if (key === "shipdate") {
+            var now = new Date();
             var currentDate = new Date(value);
             var date = currentDate.getDate();
             $('#shipdate').val(date);
@@ -144,6 +153,13 @@ $(document).ready(function () {
             var year = currentDate.getFullYear();
             var mmddyyyy = pad(month + 1) + "/" + pad(date) + "/" + year;
             $('#shipdate').val(mmddyyyy);
+            const days = (now.getTime() - currentDate.getTime()) / (1000 * 60 * 60 * 24);
+            $('#shipage').val(Math.round(days));
+            if (Math.round(days) < 365) {
+              $('#underwarranty').val('Yes')
+            } else {
+              $('#underwarranty').val('No')
+            }
           } else if (key === "email") {
             $('#email').val(value);
           } else if (key === "phone") {
@@ -168,6 +184,11 @@ $(document).ready(function () {
             $('#ship_zip').val(value);
           } else if (key === "ship_ctry") {
             $('#ship_ctry').val(value);
+            if (value === "UK") {
+              if (Math.round(days) < 730) {
+                $('#underwarranty').val('Yes')
+              }  
+            }
           } else if (key === "id") {
             $('#rrecid').val(value);
           }
